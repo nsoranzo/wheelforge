@@ -15,7 +15,7 @@ jobs:
     outputs:
       recipes_found: ${{ steps.recipes_changes.outputs.recipes_found }}
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -73,10 +73,10 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6.2.0
         with:
           python-version: '3.14'
           cache: pip
@@ -109,7 +109,7 @@ jobs:
           merge-multiple: true
           pattern: wheelhouse-*
           path: wheelhouse/
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6.2.0
         with:
           python-version: '3.14'
           # No cache since we are not checking out the repo
