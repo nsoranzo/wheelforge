@@ -70,7 +70,7 @@ jobs:
     if: ${{ needs.setup.outputs.recipes_found == 'true' }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7.0.1
@@ -87,7 +87,7 @@ jobs:
       - name: Install required Python packages
         run: python3 -m pip install build cibuildwheel PyYAML requests
       - name: Set up QEMU to build non-native architectures
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && runner.arch == 'X64'
         uses: docker/setup-qemu-action@v4.2.0
       - name: Build wheels
         run: |
