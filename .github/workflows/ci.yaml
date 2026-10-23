@@ -78,7 +78,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@v7.0.0
         with:
-          python-version: '3.14'
+          python-version: '3.15'
           cache: pip
       - uses: actions/download-artifact@v8
         with:
@@ -111,7 +111,7 @@ jobs:
           path: wheelhouse/
       - uses: actions/setup-python@v7.0.0
         with:
-          python-version: '3.14'
+          python-version: '3.15'
           # No cache since we are not checking out the repo
       - name: Setup deploy environment
         run: python3 -m pip install s3pypi
